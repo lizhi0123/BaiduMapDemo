@@ -25,6 +25,9 @@
 }
 
 
+- (IBAction)gainDu:(id)sender {
+    [self onClickGeocode];
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -34,20 +37,7 @@
     
     _geocodesearch  = [[BMKGeoCodeSearch alloc] init];
     _geocodesearch.delegate =self;
-//    //适配ios7
-//    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
-//    {
-//        //        self.edgesForExtendedLayout=UIRectEdgeNone;
-//        self.navigationController.navigationBar.translucent = NO;
-//    }
-//    _geocodesearch = [[BMKGeoCodeSearch alloc]init];
-//    _geocodesearch.delegate = self;
-//    _coordinateXText.text = @"121.403981";
-//    _coordinateYText.text = @"31.915101";
-//    _cityText.text = @"上海";
-//    _addrText.text = @"龙华中路 2307号";
-    //    [_mapView setZoomLevel:14];
-//    [self onClickReverseGeocode];
+
     
 }
 
@@ -72,9 +62,7 @@
     if (_geocodesearch != nil) {
         _geocodesearch = nil;
     }
-    //    if (_mapView) {
-    //        _mapView = nil;
-    //    }
+
 }
 
 -(IBAction)textFiledReturnEditing:(id)sender {
@@ -82,23 +70,7 @@
 }
 
 
-////根据anntation生成对应的View
-//- (BMKAnnotationView *)mapView:(BMKMapView *)view viewForAnnotation:(id <BMKAnnotation>)annotation
-//{
-//    NSString *AnnotationViewID = @"annotationViewID";
-//    //根据指定标识查找一个可被复用的标注View，一般在delegate中使用，用此函数来代替新申请一个View
-//    BMKAnnotationView *annotationView = [view dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
-//    if (annotationView == nil) {
-//        annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
-//        ((BMKPinAnnotationView*)annotationView).pinColor = BMKPinAnnotationColorRed;
-//        ((BMKPinAnnotationView*)annotationView).animatesDrop = YES;
-//    }
-//
-//    annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
-//    annotationView.annotation = annotation;
-//    annotationView.canShowCallout = YES;
-//    return annotationView;
-//}
+
 - (void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error
 {
     //    NSArray* array = [NSArray arrayWithArray:_mapView.annotations];
@@ -137,7 +109,7 @@
         NSString* titleStr;
         NSString* showmeg;
         titleStr = @"反向地理编码";
-        showmeg = [NSString stringWithFormat:@"%@",item.title];
+        showmeg = [NSString stringWithFormat:@"title=%@,provence =%@,city=%@,district=%@,streetName=%@",item.title,result.addressDetail.province,result.addressDetail.city,result.addressDetail.district,result.addressDetail.streetName];
         
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
         [myAlertView show];
@@ -148,8 +120,8 @@
 
 -(void)onClickReverseGeocode
 {
-    float fat =31.00;
-    float log = 121.00;
+    float fat =31.197242;
+    float log = 121.476793;
     isGeoSearch = false;
     CLLocationCoordinate2D pt = (CLLocationCoordinate2D){0, 0};
     pt = (CLLocationCoordinate2D){fat, log};

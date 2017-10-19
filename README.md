@@ -8,5 +8,10 @@
 
 Demo: ios 百度地图通过经纬度，进行 反地理编码(反geo检索)。得到 省，城市  及 信息地址。
 Demo地址：https://github.com/lizhi0123/BaiduMapDemo
+![反地理编码效果图.png](http://upload-images.jianshu.io/upload_images/2384741-12e3f7b41c68949c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![正向地理编码效果图.png](http://upload-images.jianshu.io/upload_images/2384741-1f6af20b651c92a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 
 如果帮你解决了问题， 请留言。
